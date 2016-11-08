@@ -2,7 +2,7 @@
 
 int main()
 {
-	int range = 1000;
+	int range = 10000;
 	int* array = new int[range+1];
 	for(int i =2; i < range+1; i++)
 	{
