@@ -22,7 +22,5 @@ int main()
             grade[i-2][1] =max(grade[i][0]+stair[i-2],grade[i][1]+stair[i-2]);
     }
 
-    for(int i=0;i < N;i++)
-        printf("%d: %d %d \n",i,grade[i][0],grade[i][1]);
-    printf("%d",max(grade[0][0],grade[0][1]));
+    printf("%d",max(max(grade[0][0],grade[0][1]),max(grade[1][0],grade[1][1])));
 }
