@@ -1,25 +1,24 @@
 #include<stdio.h>
+void swap(int* arr,int i,int j)
+{
+    int tmp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = tmp;
+}
+
 int main()
 {
-	const int N = 3;
-	int arr[N];
-	for(int i =0;i < N;i++)
+	int arr[3];
+	for(int i =0;i < 3;i++)
 		scanf("%d",&arr[i]);
-	
-	int i,j,tmp;
-	for(i =1; i<= N-1;i++)
-	{
-		for(j =i;j<=N-1;j++)
-		{
-			if(arr[j-1] > arr[j])
-			{
-				tmp = arr[j];
-				arr[j] = arr[j+1];
-				arr[j+1]=arr[j];
-			}
-		}
-	}
-	for(int i =0;i < N; i++)
-		printf("%d\n",arr[i]);
+
+    if(arr[0] > arr[1])
+        swap(arr,0,1);
+    if(arr[1] > arr[2])
+        swap(arr,1,2);
+    if(arr[0] > arr[1])
+        swap(arr,0,1);
+	for(int i =0;i < 3; i++)
+		printf("%d ",arr[i]);
 }
 
