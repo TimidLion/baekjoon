@@ -1,51 +1,7 @@
 #include<stdio.h>
 #include<queue>
 int map[401][401];
-//int visit[401];
 using namespace std;
-bool BFS(int v,int n,int end)
-{
-    queue<int> Queue;
-    int visit[401] = {};
-    visit[v] = 1;
-    Queue.push(v);
-    while(!Queue.empty())
-    {
-        v = Queue.front();
-        Queue.pop();
-        for(int i=1; i <= n; i++)
-        {
-            if(map[v][i] == 1 && i == end)
-                return true;
-            if(map[v][i] == 1 && !visit[i])
-            {
-                visit[i] = 1;
-                Queue.push(i);
-            }
-        }
-    }
-    return false;
-}
-
-/*
-bool DFS(int v, int n,int end)
-{
-    visit[v] = 1;
-    for(int i=1; i <=n; i++)
-    {
-        if(map[v][i] == 1 && i == end)
-            return true;
-        if(map[v][i] == 1 && !visit[i])
-        {
-            printf("%d -> %d\n",v,i);
-            DFS(i,n,end); 
-        }
-    }
-    for(int i=1; i <=n; i++)
-        visit[i] = 0;
-    return false;
-}
-*/
 int main()
 {
     int n,k;
@@ -54,22 +10,33 @@ int main()
     {
         int i,j;
         scanf("%d %d",&i,&j);
-        map[i][j] = 1;
-        map[j][i] = -1;
+        map[i][j] = -1;
+        map[j][i] = 1;
     }
+
+    for(int k=1; k <= n; k++)
+        for(int i=1; i <= n; i++)
+            for(int j=1; j <= n; j++)
+            {
+                if(map[i][k] == 1 && map[k][j] == 1)
+                    map[i][j] = 1;
+                if(map[i][k] == -1 && map[k][j] == -1)
+                    map[i][j] = -1;
+            }
+
     int s;
     scanf("%d",&s);
     while(s--)
     {
         int a,b;
-        scanf("%d %d",&a,&b);
+        scanf("%d %d",&a,&b);        
         int answer;
-        if(BFS(a,n,b))
-            answer = -1;
-        else if(BFS(b,n,a))
-            answer = 1;
+        if(map[a][b] != 0)
+            answer = map[a][b];
+        else if(map[b][a] != 0)
+            answer = map[b][a];
         else
-            answer = 0;
+            answer = map[a][b];
         printf("%d\n",answer);
     } 
 }
