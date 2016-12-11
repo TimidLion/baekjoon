@@ -1,26 +1,16 @@
 #include<stdio.h>
 int map[50][50];
+int dx[8] = {-1,1,0,0,-1,-1,1,1};
+int dy[8] = {0,0,-1,1,-1,1,-1,1};
 int DFS(int x,int y,int w,int h)
 {
 
     map[x][y] = 2;
 
-    if(x > 0 && map[x-1][y] == 1)
-        DFS(x-1,y,w,h);
-    if(x < h-1 && map[x+1][y] == 1)
-        DFS(x+1,y,w,h);
-    if(y > 0 && map[x][y-1] == 1)
-        DFS(x,y-1,w,h);
-    if(y < w-1 && map[x][y+1] == 1)
-        DFS(x,y+1,w,h);
-    if(x > 0 && y > 0 && map[x-1][y-1] == 1)
-        DFS(x-1,y-1,w,h);
-    if(x > 0 && y < w-1 && map[x-1][y+1] == 1)
-        DFS(x-1,y+1,w,h);
-    if(x < h-1 && y > 0 && map[x+1][y-1] == 1)
-        DFS(x+1,y-1,w,h);
-    if(x < h-1 && y < w-1 && map[x+1][y+1] == 1)
-        DFS(x+1,y+1,w,h);
+    for(int i=0;i < 8; i++)
+        if(x+dx[i] >= 0 && x+dx[i] <= h-1 && y+dy[i] >= 0 && y+dy[i] <= w-1)
+            if(map[x+dx[i]][y+dy[i]] == 1)
+                DFS(x+dx[i],y+dy[i],w,h);
 
     return 1;
 }
