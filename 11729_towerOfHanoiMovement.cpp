@@ -27,7 +27,6 @@ void hanoi(int N,int from, int to)
     else
     {
         int tmp = 6-from-to;
-
         hanoi(N-1,from,tmp);
         printf("%d %d\n",from,to);
         hanoi(N-1,tmp,to);
