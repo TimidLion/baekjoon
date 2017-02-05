@@ -32,6 +32,7 @@ int main()
             break;
         }
     }
+
     pair<int, int> now;
     while(!EQ.empty())
     {

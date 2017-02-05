@@ -8,7 +8,7 @@ int main()
     Dp[2]=3;
     for(int i=3; i <= n; i++)
     {
-        Dp[i] = Dp[i-1] + 2*Dp[i-2]%10007;
+        Dp[i] = (Dp[i-1] + 2*Dp[i-2])%10007;
     }
-    printf("%d",Dp[n]%10007);
+    printf("%d",Dp[n]);
 }
