@@ -3,15 +3,12 @@ int main()
 {
     int X;
     scanf("%d",&X);
-    int stickNum = 1;
-    int sum = 0;
-    for(int s=64; s > 0; s /= 2)
+    int N=0;
+    while(X> 0)
     {
-        sum += s;
-        if(X==sum)
-            break;
-        sum -= s;
-        stickNum++;
+        if(X%2)
+            N++;
+        X/=2;
     }
-    printf("%d",stickNum);
+    printf("%d",N);
 }
